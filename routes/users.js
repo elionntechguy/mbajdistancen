@@ -7,7 +7,7 @@ var cors = require('cors');
 router.get("/", cors(), function (req, res, next) {
   res.setHeader("Content-Type", "application/json");
   let x = {
-      tePergjitshme:{
+      tePergjithshme:{
           teKonfirmuara:387,
           teSheruara:70,
           teVdekur:10
