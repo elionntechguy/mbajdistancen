@@ -1,8 +1,10 @@
 var express = require("express");
 var router = express.Router();
+var cors = require('cors');
+
 
 /* GET users listing. */
-router.get("/", function (req, res, next) {
+router.get("/", cors(), function (req, res, next) {
   res.setHeader("Content-Type", "application/json");
   let x = {
       tePergjitshme:{
@@ -12,7 +14,7 @@ router.get("/", function (req, res, next) {
       },
       historiku:[
           {
-              
+
           }
       ]
   }
