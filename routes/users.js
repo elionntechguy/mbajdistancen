@@ -8,9 +8,9 @@ router.get("/", cors(), function (req, res, next) {
   res.setHeader("Content-Type", "application/json");
   let x = {
       tePergjithshme:{
-          teKonfirmuara:387,
-          teSheruara:70,
-          teVdekur:10
+          teKonfirmuara:703,
+          teSheruara:162,
+          teVdekur:19
       },
       historiku:[
           {
