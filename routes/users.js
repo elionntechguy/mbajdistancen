@@ -292,6 +292,12 @@ router.get("/", cors(), function (req, res, next) {
           teSheruara: 128,
           teVdekur: 18,
           
+        },
+        {
+          data: "22-Apr",
+          teKonfirmuara: 630,
+          teSheruara: 138,
+          teVdekur: 18,
         }
       ]
   }
