@@ -298,7 +298,44 @@ router.get("/", cors(), function (req, res, next) {
           teKonfirmuara: 630,
           teSheruara: 138,
           teVdekur: 18,
+        },
+        {
+          data: "23-Apr",
+          teKonfirmuara: 669,
+          teSheruara: 159,
+          teVdekur: 19,
+        },
+        {
+          data: "24-Apr",
+          teKonfirmuara: 703,
+          teSheruara: 162,
+          teVdekur: 19,
+        },
+        {
+          data: "25-Apr",
+          teKonfirmuara: 731,
+          teSheruara: 165,
+          teVdekur: 20,
+        },
+        {
+          data: "26-Apr",
+          teKonfirmuara: 763,
+          teSheruara: 166,
+          teVdekur: 21,
+        },
+        {
+          data: "27-Apr",
+          teKonfirmuara: 780,
+          teSheruara: 201,
+          teVdekur: 22,
+        },
+        {
+          data: "28-Apr",
+          teKonfirmuara: 790,
+          teSheruara: 232,
+          teVdekur: 22,
         }
+      
       ]
   }
   res.end(JSON.stringify(x));
