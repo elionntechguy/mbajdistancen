@@ -8,7 +8,7 @@ router.get("/", cors(), function (req, res, next) {
   let x = {
     tePergjithshme: {
       teKonfirmuara: 989,
-      teSheruara: 754,
+      teSheruara: 769,
       teVdekur: 29,
     },
     qytetet: [
