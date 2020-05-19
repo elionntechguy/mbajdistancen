@@ -12,11 +12,11 @@ router.get("/", cors(), function (req, res, next) {
       teVdekur: 29,
     },
     qytetet: [
-      { qyteti: "Ferizaj", raste: 98 },
-      { qyteti: "Peje", raste: 73 },
-      { qyteti: "Prishtine", raste: 67 },
-      { qyteti: "Prizren", raste: 60 },
-      { qyteti: "Gjilan", raste: 48 }
+      { qyteti: "Ferizaj", raste: 134 },
+      { qyteti: "Peje", raste: 74 },
+      { qyteti: "Prishtine", raste: 83 },
+      { qyteti: "Prizren", raste: 93 },
+      { qyteti: "Gjilan", raste: 79 }
     ],
     historiku: [
       {
