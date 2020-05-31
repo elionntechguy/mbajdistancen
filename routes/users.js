@@ -7,16 +7,16 @@ router.get("/", cors(), function (req, res, next) {
   res.setHeader("Content-Type", "application/json");
   let x = {
     tePergjithshme: {
-      teKonfirmuara: 989,
-      teSheruara: 769,
-      teVdekur: 29,
+      teKonfirmuara: 1070,
+      teSheruara: 833,
+      teVdekur: 30,
     },
     qytetet: [
       { qyteti: "Ferizaj", raste: 134 },
       { qyteti: "Peje", raste: 74 },
-      { qyteti: "Prishtine", raste: 83 },
-      { qyteti: "Prizren", raste: 93 },
-      { qyteti: "Gjilan", raste: 79 }
+      { qyteti: "Prishtine", raste: 84 },
+      { qyteti: "Prizren", raste: 134 },
+      { qyteti: "Gjilan", raste: 81 }
     ],
     historiku: [
       {
@@ -426,6 +426,72 @@ router.get("/", cors(), function (req, res, next) {
         teKonfirmuara: 989,
         teSheruara: 769,
         teVdekur: 29,
+      },
+      {
+        data: "20-May",
+        teKonfirmuara: 1003,
+        teSheruara: 772,
+        teVdekur: 29,
+      },
+      {
+        data: "21-May",
+        teKonfirmuara: 1004,
+        teSheruara: 772,
+        teVdekur: 29,
+      },
+      {
+        data: "22-May",
+        teKonfirmuara: 1025,
+        teSheruara: 782,
+        teVdekur: 29,
+      },
+      {
+        data: "23-May",
+        teKonfirmuara: 1032,
+        teSheruara: 785,
+        teVdekur: 29,
+      },
+      {
+        data: "24-May",
+        teKonfirmuara: 1032,
+        teSheruara: 789,
+        teVdekur: 29,
+      },
+      {
+        data: "25-May",
+        teKonfirmuara: 1038,
+        teSheruara: 791,
+        teVdekur: 30,
+      },
+      {
+        data: "26-May",
+        teKonfirmuara: 1047,
+        teSheruara: 794,
+        teVdekur: 30,
+      },
+      {
+        data: "27-May",
+        teKonfirmuara: 1048,
+        teSheruara: 801,
+        teVdekur: 30,
+      },
+      {
+        data: "28-May",
+        teKonfirmuara: 1052,
+        teSheruara: 812,
+        teVdekur: 30,
+      },
+      {
+        data: "29-May",
+        teKonfirmuara: 1064,
+        teSheruara: 821,
+        teVdekur: 30,
+      },
+      {
+        data: "30-May",
+        teKonfirmuara: 1070,
+        teSheruara: 833,
+        teVdekur: 30,
       },
     ],
   };
