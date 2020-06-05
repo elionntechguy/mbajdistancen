@@ -7,15 +7,15 @@ router.get("/", cors(), function (req, res, next) {
   res.setHeader("Content-Type", "application/json");
   let x = {
     tePergjithshme: {
-      teKonfirmuara: 1122,
-      teSheruara: 839,
+      teKonfirmuara: 1146,
+      teSheruara: 874,
       teVdekur: 30,
     },
     qytetet: [
       { qyteti: "Ferizaj", raste: 134 },
       { qyteti: "Peje", raste: 74 },
-      { qyteti: "Prishtine", raste: 85 },
-      { qyteti: "Prizren", raste: 134 },
+      { qyteti: "Prishtine", raste: 86 },
+      { qyteti: "Prizren", raste: 135 },
       { qyteti: "Gjilan", raste: 81 }
     ],
     historiku: [
@@ -478,37 +478,49 @@ router.get("/", cors(), function (req, res, next) {
       {
         data: "28-May",
         teKonfirmuara: 1052,
-        teSheruara: 812,
+        teSheruara: 820,
         teVdekur: 30,
       },
       {
         data: "29-May",
         teKonfirmuara: 1064,
-        teSheruara: 821,
+        teSheruara: 829,
         teVdekur: 30,
       },
       {
         data: "30-May",
         teKonfirmuara: 1070,
-        teSheruara: 833,
+        teSheruara: 841,
         teVdekur: 30,
       },
       {
         data: "31-May",
         teKonfirmuara: 1082,
-        teSheruara: 835,
+        teSheruara: 843,
         teVdekur: 30,
       },
       {
         data: "01-Jun",
         teKonfirmuara: 1109,
-        teSheruara: 835,
+        teSheruara: 843,
         teVdekur: 30,
       },
       {
         data: "02-Jun",
         teKonfirmuara: 1122,
-        teSheruara: 839,
+        teSheruara: 847,
+        teVdekur: 30,
+      },
+      {
+        data: "03-Jun",
+        teKonfirmuara: 1141,
+        teSheruara: 871,
+        teVdekur: 30,
+      },
+      {
+        data: "04-Jun",
+        teKonfirmuara: 1146,
+        teSheruara: 874,
         teVdekur: 30,
       },
     ],
