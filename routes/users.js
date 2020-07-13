@@ -7,9 +7,9 @@ router.get("/", cors(), function (req, res, next) {
   res.setHeader("Content-Type", "application/json");
   let x = {
     tePergjithshme: {
-      teKonfirmuara: 1146,
-      teSheruara: 874,
-      teVdekur: 30,
+      teKonfirmuara: 4931,
+      teSheruara: 2267,
+      teVdekur: 102,
     },
     qytetet: [
       { qyteti: "Ferizaj", raste: 134 },
