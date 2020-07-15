@@ -7,16 +7,16 @@ router.get("/", cors(), function (req, res, next) {
   res.setHeader("Content-Type", "application/json");
   let x = {
     tePergjithshme: {
-      teKonfirmuara: 5118,
-      teSheruara: 2370,
-      teVdekur: 108,
+      teKonfirmuara: 5237,
+      teSheruara: 2462,
+      teVdekur: 112,
     },
     qytetet: [
-      { qyteti: "Ferizaj", raste: 368 },
-      { qyteti: "Peje", raste: 211 },
-      { qyteti: "Prishtine", raste: 1497 },
-      { qyteti: "Prizren", raste: 387 },
-      { qyteti: "Gjilan", raste: 280 }
+      { qyteti: "Ferizaj", raste: 373 },
+      { qyteti: "Peje", raste: 223 },
+      { qyteti: "Prishtine", raste: 1589 },
+      { qyteti: "Prizren", raste: 390 },
+      { qyteti: "Gjilan", raste: 283 }
     ],
     historiku: [
       {
@@ -756,6 +756,12 @@ router.get("/", cors(), function (req, res, next) {
         teKonfirmuara: 5118,
         teSheruara: 2370,
         teVdekur: 108,
+      },
+      {
+        data: "14-Jul",
+        teKonfirmuara: 5237,
+        teSheruara: 2462,
+        teVdekur: 112,
       },
 
 
