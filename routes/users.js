@@ -3525,6 +3525,7 @@ router.get("/", cors(), function (req, res, next) {
         teSheruara: 109726,
         teVdekur: 2387,
         testimet: 925052,
+        vaksinuartotal: 764775,
       },
       {
         data: "2021-08-27",
@@ -3532,6 +3533,7 @@ router.get("/", cors(), function (req, res, next) {
         teSheruara: 111340,
         teVdekur: 2403,
         testimet: 937616,
+        vaksinuartotal: 780637,
       },
     ],
   };
