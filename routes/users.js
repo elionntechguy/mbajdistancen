@@ -12,6 +12,11 @@ router.get("/", cors(), function (req, res, next) {
       teVdekur: 2403,
       testimet: 937616,
     },
+    vaksina: {
+      dozaPare: 518819,
+      dozaDyte: 261818,
+      vaksinuartotal: 780637,
+    },
     qytetet: [
       { qyteti: "Prishtine", raste: 4882 },
       { qyteti: "Mitrovice", raste: 1125 },
@@ -3519,12 +3524,14 @@ router.get("/", cors(), function (req, res, next) {
         teKonfirmuara: 137052,
         teSheruara: 109726,
         teVdekur: 2387,
+        testimet: 925052,
       },
       {
         data: "2021-08-27",
         teKonfirmuara: 139150,
         teSheruara: 111340,
         teVdekur: 2403,
+        testimet: 937616,
       },
     ],
   };
