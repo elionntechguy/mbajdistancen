@@ -10,6 +10,7 @@ router.get("/", cors(), function (req, res, next) {
       teKonfirmuara: 139150,
       teSheruara: 111340,
       teVdekur: 2403,
+      testimet: 937616,
     },
     qytetet: [
       { qyteti: "Prishtine", raste: 4882 },
