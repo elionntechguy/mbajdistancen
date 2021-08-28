@@ -20,7 +20,7 @@ teSheruara = WebDriverWait(driver, delay).until(EC.presence_of_element_located((
 teVdekur = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-bootstrap/ng2-bootstrap/bootstrap/div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div[1]/div/lego-report/lego-canvas-container/div/file-drop-zone/span/content-section/div[19]/canvas-component/div/div/div[1]/div/div/kpimetric/div/div[2]'))).text
 testimet = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-bootstrap/ng2-bootstrap/bootstrap/div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div[1]/div/lego-report/lego-canvas-container/div/file-drop-zone/span/content-section/div[35]/canvas-component/div/div/div[1]/div/div/kpimetric/div/div[2]'))).text
 
-with open("api.json", "r+") as file:
+with open("routes/api.json", "r+") as file:
     information = json.load(file)
     information["tePergjithshme"] = {
         'teKonfirmuara': int(teKonfirmuara.replace(',', '')),
@@ -32,7 +32,9 @@ with open("api.json", "r+") as file:
     json.dump(information, file, indent=4)
     file.truncate()
 
-with open("api.json", 'w') as file:
+with open("routes/api.json", 'w') as file:
     json.dump(information, file, indent=2)
+
+print("Successfully updated!")
 
 driver.quit()
