@@ -6,9 +6,9 @@
     "testimet": 969137
   },
   "vaksina": {
-    "dozaPare": 538766,
-    "dozaDyte": 269312,
-    "vaksinuartotal": 808078
+    "dozaPare": 548855,
+    "dozaDyte": 276890,
+    "vaksinuartotal": 825745
   },
   "qytetet": [
     {
@@ -3584,6 +3584,14 @@
       "teVdekur": 2477,
       "testimet": 969137,
       "vaksinuartotal": 808078
+    },
+    {
+      "data": "2021-08-31",
+      "teKonfirmuara": 144986,
+      "teSheruara": 115597,
+      "teVdekur": 2503,
+      "testimet": 980609,
+      "vaksinuartotal": 825745
     }
   ]
 }

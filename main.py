@@ -7,6 +7,14 @@ from webdriver_manager.chrome import ChromeDriverManager
 import json
 import os
 import requests
+
+from github import Github
+
+g = Github(os.environ.get("tokenauth"))
+repo = g.get_user().get_repo('mbajdistancen')
+all_files = []
+contents = repo.get_contents("")
+
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-dev-shm-usage")
@@ -21,9 +29,34 @@ teSheruara = WebDriverWait(driver, delay).until(EC.presence_of_element_located((
 teVdekur = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-bootstrap/ng2-bootstrap/bootstrap/div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div[1]/div/lego-report/lego-canvas-container/div/file-drop-zone/span/content-section/div[19]/canvas-component/div/div/div[1]/div/div/kpimetric/div/div[2]'))).text
 testimet = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-bootstrap/ng2-bootstrap/bootstrap/div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div[1]/div/lego-report/lego-canvas-container/div/file-drop-zone/span/content-section/div[35]/canvas-component/div/div/div[1]/div/div/kpimetric/div/div[2]'))).text
 
-url = 'https://glacial-island-71772.herokuapp.com/api/post'
-params = {'teKonfirmuara': int(teKonfirmuara.replace(',', '')), 'teSheruara': int(teSheruara.replace(',', '')), 'teVdekur': int(teVdekur.replace(',', '')), 'testimet': int(testimet.replace(',', ''))}
+# url = 'https://mbajdistancenapi.herokuapp.com/api/post'
+# params = {'teKonfirmuara': int(teKonfirmuara.replace(',', '')), 'teSheruara': int(teSheruara.replace(',', '')), 'teVdekur': int(teVdekur.replace(',', '')), 'testimet': int(testimet.replace(',', ''))}
+#
+# requests.post(url, params=params)
 
-requests.post(url, params=params)
+with open("routes/api.json", "r+") as file:
+    information = json.load(file)
+    information["tePergjithshme"] = {
+        'teKonfirmuara': int(teKonfirmuara.replace(',', '')),
+        'teSheruara': int(teSheruara.replace(',', '')),
+        'teVdekur': int(teVdekur.replace(',', '')),
+        'testimet': int(testimet.replace(',', ''))
+    }
+    file.seek(0)
+    json.dump(information, file, indent=4)
+    file.truncate()
+
+with open('routes/api.json', 'r') as file:
+    content = file.read()
+
+contents = repo.get_contents('routes/api.json')
+repo.update_file(contents.path, "New cases update", content, contents.sha, branch="master")
+print('routes/api.json UPDATED')
+
+# else:
+#     repo.create_file(git_file, "committing files", content, branch="master")
+#     print(git_file + ' CREATED')
+
+print('done!')
 
 driver.quit()

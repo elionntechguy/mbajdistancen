@@ -11,9 +11,9 @@ router.get("/", cors(), function (req, res, next) {
   res.end();
 });
 
-router.post('/post', (req, res) => {
+// router.post('/post', (req, res) => {
   
-  const taskFile = JSON.parse(fs.readFileSync(dataPath, "utf8"));
+//   const taskFile = JSON.parse(fs.readFileSync(dataPath, "utf8"));
 
   // let taskToAdd = {
   //   "teKonfirmuara": req.query.teKonfirmuara,
@@ -22,12 +22,12 @@ router.post('/post', (req, res) => {
   //   "testimet": req.query.testimet
   // };
 
-  taskFile.tePergjithshme.teKonfirmuara = parseInt(req.query.teKonfirmuara)
-  taskFile.tePergjithshme.teSheruara = parseInt(req.query.teSheruara)
-  taskFile.tePergjithshme.teVdekur = parseInt(req.query.teVdekur)
-  taskFile.tePergjithshme.testimet = parseInt(req.query.testimet)
-  let edited_ReadData = JSON.stringify(taskFile);
-  fs.writeFileSync(dataPath, JSON.stringify(JSON.parse(edited_ReadData), null, 2));
+  // taskFile.tePergjithshme.teKonfirmuara = parseInt(req.query.teKonfirmuara)
+  // taskFile.tePergjithshme.teSheruara = parseInt(req.query.teSheruara)
+  // taskFile.tePergjithshme.teVdekur = parseInt(req.query.teVdekur)
+  // taskFile.tePergjithshme.testimet = parseInt(req.query.testimet)
+  // let edited_ReadData = JSON.stringify(taskFile);
+  // fs.writeFileSync(dataPath, JSON.stringify(JSON.parse(edited_ReadData), null, 2));
 
   // let srcObj2 = srcObj.tePergjithshme
   // taskFile.push(taskToAdd);
@@ -46,7 +46,7 @@ router.post('/post', (req, res) => {
   // teKonfirmuara = userData;
   // fs.writeFileSync(dataPath, JSON.stringify(teKonfirmuara));
   // res.send({success: true, msg: 'User data updated successfully'})
-})
+// })
 
 const saveAPIdata = (data) => {
   const stringifyData = JSON.stringify(data)
