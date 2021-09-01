@@ -7,8 +7,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 import json
 import os
 import requests
-
 from github import Github
+from apscheduler.schedulers.blocking import BlockingScheduler
+
+sched = BlockingScheduler()
 
 g = Github(os.environ.get("tokenauth"))
 repo = g.get_user().get_repo('mbajdistancen')
@@ -21,42 +23,46 @@ chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--no-sandbox")
 chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 
-driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
-driver.get("https://datastudio.google.com/embed/u/0/reporting/2e546d77-8f7b-4c35-8502-38533aa0e9e8/page/MT0qB")
-delay = 20
-teKonfirmuara = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-bootstrap/ng2-bootstrap/bootstrap/div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div[1]/div/lego-report/lego-canvas-container/div/file-drop-zone/span/content-section/div[15]/canvas-component/div/div/div[1]/div/div/kpimetric/div/div[2]'))).text
-teSheruara = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-bootstrap/ng2-bootstrap/bootstrap/div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div[1]/div/lego-report/lego-canvas-container/div/file-drop-zone/span/content-section/div[21]/canvas-component/div/div/div[1]/div/div/kpimetric/div/div[2]'))).text
-teVdekur = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-bootstrap/ng2-bootstrap/bootstrap/div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div[1]/div/lego-report/lego-canvas-container/div/file-drop-zone/span/content-section/div[19]/canvas-component/div/div/div[1]/div/div/kpimetric/div/div[2]'))).text
-testimet = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-bootstrap/ng2-bootstrap/bootstrap/div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div[1]/div/lego-report/lego-canvas-container/div/file-drop-zone/span/content-section/div[35]/canvas-component/div/div/div[1]/div/div/kpimetric/div/div[2]'))).text
+@sched.scheduled_job('cron', day_of_week='mon-sun', hour=16)
+def scheduled_job():
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
+    driver.get("https://datastudio.google.com/embed/u/0/reporting/2e546d77-8f7b-4c35-8502-38533aa0e9e8/page/MT0qB")
+    delay = 20
+    teKonfirmuara = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-bootstrap/ng2-bootstrap/bootstrap/div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div[1]/div/lego-report/lego-canvas-container/div/file-drop-zone/span/content-section/div[15]/canvas-component/div/div/div[1]/div/div/kpimetric/div/div[2]'))).text
+    teSheruara = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-bootstrap/ng2-bootstrap/bootstrap/div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div[1]/div/lego-report/lego-canvas-container/div/file-drop-zone/span/content-section/div[21]/canvas-component/div/div/div[1]/div/div/kpimetric/div/div[2]'))).text
+    teVdekur = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-bootstrap/ng2-bootstrap/bootstrap/div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div[1]/div/lego-report/lego-canvas-container/div/file-drop-zone/span/content-section/div[19]/canvas-component/div/div/div[1]/div/div/kpimetric/div/div[2]'))).text
+    testimet = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-bootstrap/ng2-bootstrap/bootstrap/div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div[1]/div/lego-report/lego-canvas-container/div/file-drop-zone/span/content-section/div[35]/canvas-component/div/div/div[1]/div/div/kpimetric/div/div[2]'))).text
 
-# url = 'https://mbajdistancenapi.herokuapp.com/api/post'
-# params = {'teKonfirmuara': int(teKonfirmuara.replace(',', '')), 'teSheruara': int(teSheruara.replace(',', '')), 'teVdekur': int(teVdekur.replace(',', '')), 'testimet': int(testimet.replace(',', ''))}
-#
-# requests.post(url, params=params)
+    # url = 'https://mbajdistancenapi.herokuapp.com/api/post'
+    # params = {'teKonfirmuara': int(teKonfirmuara.replace(',', '')), 'teSheruara': int(teSheruara.replace(',', '')), 'teVdekur': int(teVdekur.replace(',', '')), 'testimet': int(testimet.replace(',', ''))}
+    #
+    # requests.post(url, params=params)
 
-with open("routes/api.json", "r+") as file:
-    information = json.load(file)
-    information["tePergjithshme"] = {
-        'teKonfirmuara': int(teKonfirmuara.replace(',', '')),
-        'teSheruara': int(teSheruara.replace(',', '')),
-        'teVdekur': int(teVdekur.replace(',', '')),
-        'testimet': int(testimet.replace(',', ''))
-    }
-    file.seek(0)
-    json.dump(information, file, indent=4)
-    file.truncate()
+    with open("routes/api.json", "r+") as file:
+        information = json.load(file)
+        information["tePergjithshme"] = {
+            'teKonfirmuara': int(teKonfirmuara.replace(',', '')),
+            'teSheruara': int(teSheruara.replace(',', '')),
+            'teVdekur': int(teVdekur.replace(',', '')),
+            'testimet': int(testimet.replace(',', ''))
+        }
+        file.seek(0)
+        json.dump(information, file, indent=4)
+        file.truncate()
 
-with open('routes/api.json', 'r') as file:
-    content = file.read()
+    with open('routes/api.json', 'r') as file:
+        content = file.read()
 
-contents = repo.get_contents('routes/api.json')
-repo.update_file(contents.path, "New cases update", content, contents.sha, branch="master")
-print('routes/api.json UPDATED')
+    contents = repo.get_contents('routes/api.json')
+    repo.update_file(contents.path, "New cases update", content, contents.sha, branch="master")
+    print('routes/api.json UPDATED')
 
-# else:
-#     repo.create_file(git_file, "committing files", content, branch="master")
-#     print(git_file + ' CREATED')
+    # else:
+    #     repo.create_file(git_file, "committing files", content, branch="master")
+    #     print(git_file + ' CREATED')
 
-print('done!')
+    print('done!')
 
-driver.quit()
+    driver.quit()
+
+sched.start()
