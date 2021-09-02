@@ -25,19 +25,19 @@ chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--no-sandbox")
 chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 
-@sched.scheduled_job('cron', day_of_week='mon-sun', hour=17)
+@sched.scheduled_job('interval', minutes=5)
 def scheduled_job():
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
     url = "https://datastudio.google.com/embed/u/0/reporting/2e546d77-8f7b-4c35-8502-38533aa0e9e8/page/MT0qB"
     url1 = "https://msh.rks-gov.net/10.230.0.57+9000/coviddashboard.html"
     driver.get(url)
     delay = 20
+    time.sleep(3)
     teKonfirmuara = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-bootstrap/ng2-bootstrap/bootstrap/div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div[1]/div/lego-report/lego-canvas-container/div/file-drop-zone/span/content-section/div[15]/canvas-component/div/div/div[1]/div/div/kpimetric/div/div[2]'))).text
     teSheruara = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-bootstrap/ng2-bootstrap/bootstrap/div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div[1]/div/lego-report/lego-canvas-container/div/file-drop-zone/span/content-section/div[21]/canvas-component/div/div/div[1]/div/div/kpimetric/div/div[2]'))).text
     teVdekur = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-bootstrap/ng2-bootstrap/bootstrap/div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div[1]/div/lego-report/lego-canvas-container/div/file-drop-zone/span/content-section/div[19]/canvas-component/div/div/div[1]/div/div/kpimetric/div/div[2]'))).text
     testimet = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-bootstrap/ng2-bootstrap/bootstrap/div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div[1]/div/lego-report/lego-canvas-container/div/file-drop-zone/span/content-section/div[35]/canvas-component/div/div/div[1]/div/div/kpimetric/div/div[2]'))).text
 
-    time.sleep(3)
     time.sleep(3)
     driver.get(url1)
     vaksinat = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH,
