@@ -7,6 +7,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 import json
 import os
 import requests
+import datetime
+import time
 from github import Github
 from apscheduler.schedulers.blocking import BlockingScheduler
 
@@ -26,17 +28,28 @@ chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 @sched.scheduled_job('cron', day_of_week='mon-sun', hour=16)
 def scheduled_job():
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
-    driver.get("https://datastudio.google.com/embed/u/0/reporting/2e546d77-8f7b-4c35-8502-38533aa0e9e8/page/MT0qB")
+    url = "https://datastudio.google.com/embed/u/0/reporting/2e546d77-8f7b-4c35-8502-38533aa0e9e8/page/MT0qB"
+    url1 = "https://msh.rks-gov.net/10.230.0.57+9000/coviddashboard.html"
+    driver.get(url)
     delay = 20
     teKonfirmuara = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-bootstrap/ng2-bootstrap/bootstrap/div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div[1]/div/lego-report/lego-canvas-container/div/file-drop-zone/span/content-section/div[15]/canvas-component/div/div/div[1]/div/div/kpimetric/div/div[2]'))).text
     teSheruara = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-bootstrap/ng2-bootstrap/bootstrap/div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div[1]/div/lego-report/lego-canvas-container/div/file-drop-zone/span/content-section/div[21]/canvas-component/div/div/div[1]/div/div/kpimetric/div/div[2]'))).text
     teVdekur = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-bootstrap/ng2-bootstrap/bootstrap/div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div[1]/div/lego-report/lego-canvas-container/div/file-drop-zone/span/content-section/div[19]/canvas-component/div/div/div[1]/div/div/kpimetric/div/div[2]'))).text
     testimet = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-bootstrap/ng2-bootstrap/bootstrap/div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div[1]/div/lego-report/lego-canvas-container/div/file-drop-zone/span/content-section/div[35]/canvas-component/div/div/div[1]/div/div/kpimetric/div/div[2]'))).text
 
+    time.sleep(3)
+    time.sleep(3)
+    driver.get(url1)
+    vaksinat = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH,
+                                                                                  '/html/body/div/div/div/div/div/div[1]/div[1]/div/div/div/div[2]/div/h4'))).text
+
     # url = 'https://mbajdistancenapi.herokuapp.com/api/post'
     # params = {'teKonfirmuara': int(teKonfirmuara.replace(',', '')), 'teSheruara': int(teSheruara.replace(',', '')), 'teVdekur': int(teVdekur.replace(',', '')), 'testimet': int(testimet.replace(',', ''))}
     #
     # requests.post(url, params=params)
+
+    today = datetime.datetime.now()
+    utc2 = today + datetime.timedelta(hours=2)
 
     with open("routes/api.json", "r+") as file:
         information = json.load(file)
@@ -47,6 +60,16 @@ def scheduled_job():
             'testimet': int(testimet.replace(',', ''))
         }
         file.seek(0)
+        information["historiku"].append(
+            {
+                "data": utc2.strftime('%Y-%m-%d'),
+                "teKonfirmuara": int(teKonfirmuara.replace(',', '')),
+                "teSheruara": int(teSheruara.replace(',', '')),
+                "teVdekur": int(teVdekur.replace(',', '')),
+                'testimet': int(testimet.replace(',', '')),
+                "vaksinuartotal": int(vaksinat.replace(',', ''))
+            }
+        )
         json.dump(information, file, indent=4)
         file.truncate()
 
@@ -54,7 +77,7 @@ def scheduled_job():
         content = file.read()
 
     contents = repo.get_contents('routes/api.json')
-    repo.update_file(contents.path, "New cases update", content, contents.sha, branch="master")
+    repo.update_file(contents.path, "New cases update " + utc2.strftime('%Y-%m-%d'), content, contents.sha, branch="master")
     print('routes/api.json UPDATED')
 
     # else:
