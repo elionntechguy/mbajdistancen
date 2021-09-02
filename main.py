@@ -9,6 +9,7 @@ import os
 import requests
 import datetime
 import time
+from tzlocal import get_localzone
 from github import Github
 from apscheduler.schedulers.blocking import BlockingScheduler
 
@@ -28,7 +29,7 @@ chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 today = datetime.datetime.now()
 utc2 = today + datetime.timedelta(hours=2)
 
-@sched.scheduled_job('cron', id="job_1", day_of_week='mon-sun', hour=16, timezone=utc2)
+@sched.scheduled_job('cron', id="job_1", day_of_week='mon-sun', hour=16, timezone="Europe/Belgrade")
 def scheduled_job():
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
     url = "https://datastudio.google.com/embed/u/0/reporting/2e546d77-8f7b-4c35-8502-38533aa0e9e8/page/MT0qB"
