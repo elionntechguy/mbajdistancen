@@ -1,9 +1,9 @@
 {
     "tePergjithshme": {
-        "teKonfirmuara": 150001,
-        "teSheruara": 120892,
-        "teVdekur": 2584,
-        "testimet": 1021404
+        "teKonfirmuara": 151279,
+        "teSheruara": 122140,
+        "teVdekur": 2605,
+        "testimet": 1032013
     },
     "vaksina": {
         "dozaPare": 570579,
@@ -3616,6 +3616,14 @@
             "teVdekur": 2584,
             "testimet": 1021404,
             "vaksinuartotal": 897332
+        },
+        {
+            "data": "2021-09-04",
+            "teKonfirmuara": 151279,
+            "teSheruara": 122140,
+            "teVdekur": 2605,
+            "testimet": 1032013,
+            "vaksinuartotal": 917737
         }
     ]
 }
