@@ -46,6 +46,12 @@ def scheduled_job():
     driver.get(url1)
     vaksinat = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH,
                                                                                   '/html/body/div/div/div/div/div/div[1]/div[1]/div/div/div/div[2]/div/h4'))).text
+    dozaPareSite = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH,
+                                                                                      '/html/body/div/div/div/div/div/div[1]/div[3]/div/div/div/div[2]/div/h4'))).text
+    dozaDyteSite = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH,
+                                                                                      '/html/body/div/div/div/div/div/div[1]/div[4]/div/div/div/div[2]/div/h4'))).text
+
+    dozaPare = int(vaksinat.replace(',', '')) - int(dozaPareSite.replace(',', ''))
 
     # url = 'https://mbajdistancenapi.herokuapp.com/api/post'
     # params = {'teKonfirmuara': int(teKonfirmuara.replace(',', '')), 'teSheruara': int(teSheruara.replace(',', '')), 'teVdekur': int(teVdekur.replace(',', '')), 'testimet': int(testimet.replace(',', ''))}
@@ -60,6 +66,11 @@ def scheduled_job():
             'testimet': int(testimet.replace(',', ''))
         }
         file.seek(0)
+        information["vaksina"] = {
+            'dozaPare': int(dozaPare.replace(',', '')),
+            'dozaDyte': int(dozaDyteSite.replace(',', '')),
+            'vaksinuartotal': int(vaksinat.replace(',', ''))
+        }
         information["historiku"].append(
             {
                 "data": utc2.strftime('%Y-%m-%d'),
