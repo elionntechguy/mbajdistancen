@@ -44,11 +44,6 @@ def scheduled_job():
     teVdekur = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-bootstrap/ng2-bootstrap/bootstrap/div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div[1]/div/lego-report/lego-canvas-container/div/file-drop-zone/span/content-section/div[19]/canvas-component/div/div/div[1]/div/div/kpimetric/div/div[2]'))).text
     testimet = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/app-bootstrap/ng2-bootstrap/bootstrap/div/div/div/div/div/div[1]/div[2]/div/div[1]/div[1]/div[1]/div/lego-report/lego-canvas-container/div/file-drop-zone/span/content-section/div[35]/canvas-component/div/div/div[1]/div/div/kpimetric/div/div[2]'))).text
 
-    try:
-        qytetet = WebDriverWait(driver, delay).until(EC.presence_of_all_elements_located((By.CSS_SELECTOR,
-                                                                                          '#body > div > div > div.lego-reporting-view.activity-view.no-licensed.new-resizer > div.page > div > div.mainBlock > div.alignHolder > div.scaleSizeHolder > div > lego-report > lego-canvas-container > div > file-drop-zone > span > content-section > div:nth-child(78) > canvas-component > div > div > div.component > div > gviz-barchart > div > div:nth-child(1) > div > svg > g:nth-child(2) > g:nth-child(2) > g:nth-child(2) > rect:nth-child(1), #body > div > div > div.lego-reporting-view.activity-view.no-licensed.new-resizer > div.page > div > div.mainBlock > div.alignHolder > div.scaleSizeHolder > div > lego-report > lego-canvas-container > div > file-drop-zone > span > content-section > div:nth-child(78) > canvas-component > div > div > div.component > div > gviz-barchart > div > div:nth-child(1) > div > svg > g:nth-child(2) > g:nth-child(2) > g:nth-child(2) > rect:nth-child(6), #body > div > div > div.lego-reporting-view.activity-view.no-licensed.new-resizer > div.page > div > div.mainBlock > div.alignHolder > div.scaleSizeHolder > div > lego-report > lego-canvas-container > div > file-drop-zone > span > content-section > div:nth-child(78) > canvas-component > div > div > div.component > div > gviz-barchart > div > div:nth-child(1) > div > svg > g:nth-child(2) > g:nth-child(2) > g:nth-child(2) > rect:nth-child(4), #body > div > div > div.lego-reporting-view.activity-view.no-licensed.new-resizer > div.page > div > div.mainBlock > div.alignHolder > div.scaleSizeHolder > div > lego-report > lego-canvas-container > div > file-drop-zone > span > content-section > div:nth-child(78) > canvas-component > div > div > div.component > div > gviz-barchart > div > div:nth-child(1) > div > svg > g:nth-child(2) > g:nth-child(2) > g:nth-child(2) > rect:nth-child(2), #body > div > div > div.lego-reporting-view.activity-view.no-licensed.new-resizer > div.page > div > div.mainBlock > div.alignHolder > div.scaleSizeHolder > div > lego-report > lego-canvas-container > div > file-drop-zone > span > content-section > div:nth-child(78) > canvas-component > div > div > div.component > div > gviz-barchart > div > div:nth-child(1) > div > svg > g:nth-child(2) > g:nth-child(2) > g:nth-child(2) > rect:nth-child(3), #body > div > div > div.lego-reporting-view.activity-view.no-licensed.new-resizer > div.page > div > div.mainBlock > div.alignHolder > div.scaleSizeHolder > div > lego-report > lego-canvas-container > div > file-drop-zone > span > content-section > div:nth-child(78) > canvas-component > div > div > div.component > div > gviz-barchart > div > div:nth-child(1) > div > svg > g:nth-child(2) > g:nth-child(2) > g:nth-child(2) > rect:nth-child(7), #body > div > div > div.lego-reporting-view.activity-view.no-licensed.new-resizer > div.page > div > div.mainBlock > div.alignHolder > div.scaleSizeHolder > div > lego-report > lego-canvas-container > div > file-drop-zone > span > content-section > div:nth-child(78) > canvas-component > div > div > div.component > div > gviz-barchart > div > div:nth-child(1) > div > svg > g:nth-child(2) > g:nth-child(2) > g:nth-child(2) > rect:nth-child(8)')))
-    except TimeoutException:
-        driver.refresh()
 
     time.sleep(3)
     driver.get(url1)
@@ -62,14 +57,6 @@ def scheduled_job():
     dozaPare = int(vaksinat.replace(',', '')) - int(dozaPareSite.replace(',', ''))
 
 
-
-    qytetinr = []
-    for qyteti in qytetet:
-        ActionChains(driver).move_to_element(qyteti).perform()
-        # listing = WebDriverWait(driver, delay).until(EC.visibility_of_element_located((By.CSS_SELECTOR, '#body > div > div > div.lego-reporting-view.activity-view.no-licensed.new-resizer.hover > div.page > div > div.mainBlock > div.google-visualization-tooltip.visible > ul > li:nth-child(2) > span:nth-child(2)'))).text
-        mouseover = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CSS_SELECTOR,
-                                                                                   "#body > div > div > div.lego-reporting-view.activity-view.no-licensed.new-resizer.hover > div.page > div > div.mainBlock > div.google-visualization-tooltip.visible > ul > li:nth-child(2) > span:nth-child(2)")))
-        qytetinr.append(mouseover.text)
 
     # url = 'https://mbajdistancenapi.herokuapp.com/api/post'
     # params = {'teKonfirmuara': int(teKonfirmuara.replace(',', '')), 'teSheruara': int(teSheruara.replace(',', '')), 'teVdekur': int(teVdekur.replace(',', '')), 'testimet': int(testimet.replace(',', ''))}
@@ -89,36 +76,6 @@ def scheduled_job():
             'dozaDyte': int(dozaDyteSite.replace(',', '')),
             'vaksinuartotal': int(vaksinat.replace(',', ''))
         }
-        information["qytetet"] = [
-            {
-                "qyteti": "Prishtine",
-                "raste": int(qytetinr[0].replace(',', ''))
-            },
-            {
-                "qyteti": "Mitrovice",
-                "raste": int(qytetinr[4].replace(',', ''))
-            },
-            {
-                "qyteti": "Peje",
-                "raste": int(qytetinr[3].replace(',', ''))
-            },
-            {
-                "qyteti": "Prizren",
-                "raste": int(qytetinr[1].replace(',', ''))
-            },
-            {
-                "qyteti": "Ferizaj",
-                "raste": int(qytetinr[2].replace(',', ''))
-            },
-            {
-                "qyteti": "Gjilan",
-                "raste": int(qytetinr[5].replace(',', ''))
-            },
-            {
-                "qyteti": "Gjakove",
-                "raste": int(qytetinr[6].replace(',', ''))
-            }
-        ]
         information["historiku"].append(
             {
                 "data": utc2.strftime('%Y-%m-%d'),
