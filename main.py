@@ -34,6 +34,7 @@ utc2 = today + datetime.timedelta(hours=2)
 @sched.scheduled_job('cron', id="job_1", day_of_week='mon-sun', hour=16, timezone="Europe/Belgrade")
 def scheduled_job():
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
+    driver.set_window_size(3840, 2160)
     url = "https://datastudio.google.com/embed/u/0/reporting/2e546d77-8f7b-4c35-8502-38533aa0e9e8/page/MT0qB"
     url1 = "https://msh.rks-gov.net/10.230.0.57+9000/coviddashboard.html"
     driver.get(url)
