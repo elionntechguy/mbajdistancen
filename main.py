@@ -70,7 +70,7 @@ def scheduled_job():
     dozaDyteSite = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH,
                                                                                       '/html/body/div/div/div/div/div/div[1]/div[4]/div/div/div/div[2]/div/h4'))).text
 
-    dozaPare = int(vaksinat.replace(',', '')) - int(dozaPareSite.replace(',', ''))
+    dozaPare = int(dozaDyteSite.replace(',', '')) + int(dozaPareSite.replace(',', ''))
 
 
 
