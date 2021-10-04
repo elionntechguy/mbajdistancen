@@ -19,7 +19,6 @@ sched = BlockingScheduler()
 
 g = Github(os.environ.get("tokenauth"))
 repo = g.get_user().get_repo('mbajdistancen')
-all_files = []
 contents = repo.get_contents("")
 
 chrome_options = Options()
@@ -75,7 +74,7 @@ def scheduled_job():
 
 
 
-    with open("routes/api.json", "r+") as file:
+    with open("data/api.json", "r+") as file:
         information = json.load(file)
         information["tePergjithshme"] = {
             'teKonfirmuara': int(teKonfirmuara.replace(',', '')),
@@ -132,12 +131,12 @@ def scheduled_job():
         json.dump(information, file, indent=4)
         file.truncate()
 
-    with open('routes/api.json', 'r') as file:
+    with open('data/api.json', 'r') as file:
         content = file.read()
 
-    contents = repo.get_contents('routes/api.json')
+    contents = repo.get_contents('data/api.json')
     repo.update_file(contents.path, "New cases update " + utc2.strftime('%Y-%m-%d'), content, contents.sha, branch="master")
-    print('routes/api.json UPDATED')
+    print('data/api.json UPDATED')
 
     print('done!')
 
