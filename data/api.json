@@ -1,43 +1,43 @@
 {
     "tePergjithshme": {
-        "teKonfirmuara": 160238,
-        "teSheruara": 155379,
-        "teVdekur": 2964,
-        "testimet": 1214599
+        "teKonfirmuara": 160279,
+        "teSheruara": 155577,
+        "teVdekur": 2965,
+        "testimet": 1217376
     },
     "vaksina": {
-        "dozaPare": 817474,
-        "dozaDyte": 578012,
-        "vaksinuartotal": 1395486
+        "dozaPare": 819451,
+        "dozaDyte": 586144,
+        "vaksinuartotal": 1405595
     },
     "qytetet": [
         {
             "qyteti": "Prishtine",
-            "raste": 310
+            "raste": 312
         },
         {
             "qyteti": "Mitrovice",
-            "raste": 84
+            "raste": 70
         },
         {
             "qyteti": "Peje",
-            "raste": 107
+            "raste": 99
         },
         {
             "qyteti": "Prizren",
-            "raste": 157
+            "raste": 114
         },
         {
             "qyteti": "Ferizaj",
-            "raste": 115
+            "raste": 110
         },
         {
             "qyteti": "Gjilan",
-            "raste": 84
+            "raste": 77
         },
         {
             "qyteti": "Gjakove",
-            "raste": 97
+            "raste": 93
         }
     ],
     "historiku": [
@@ -3744,6 +3744,14 @@
             "teVdekur": 2964,
             "testimet": 1214599,
             "vaksinuartotal": 1395486
+        },
+        {
+            "data": "2021-10-06",
+            "teKonfirmuara": 160279,
+            "teSheruara": 155577,
+            "teVdekur": 2965,
+            "testimet": 1217376,
+            "vaksinuartotal": 1405595
         }
     ]
 }
