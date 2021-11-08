@@ -1,14 +1,14 @@
 {
     "tePergjithshme": {
-        "teKonfirmuara": 160872,
-        "teSheruara": 157434,
+        "teKonfirmuara": 160880,
+        "teSheruara": 157440,
         "teVdekur": 2978,
-        "testimet": 1282192
+        "testimet": 1283191
     },
     "vaksina": {
-        "dozaPare": 841901,
-        "dozaDyte": 740021,
-        "vaksinuartotal": 1581922
+        "dozaPare": 842603,
+        "dozaDyte": 742183,
+        "vaksinuartotal": 1584786
     },
     "qytetet": [
         {
@@ -29,7 +29,7 @@
         },
         {
             "qyteti": "Ferizaj",
-            "raste": 32
+            "raste": 31
         },
         {
             "qyteti": "Gjilan",
@@ -3832,6 +3832,14 @@
             "teVdekur": 2978,
             "testimet": 1282192,
             "vaksinuartotal": 1581922
+        },
+        {
+            "data": "2021-11-08",
+            "teKonfirmuara": 160880,
+            "teSheruara": 157440,
+            "teVdekur": 2978,
+            "testimet": 1283191,
+            "vaksinuartotal": 1584786
         }
     ]
 }
