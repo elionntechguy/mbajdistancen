@@ -1,6 +1,6 @@
 # Mbaj Distancen
 
-ARCHIVED -- OBSELETE
+## ARCHIVED -- OBSELETE
 
 Mbaj Distancen is a COVID-19 API for Kosovo.
 
